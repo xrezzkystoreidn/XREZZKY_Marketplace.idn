@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>XREZZKY — Profil</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0f1115;--nav:#171c24;--surface:#1d2430;--border:#2a3442;
+  --accent:#4a7dff;--ah:#5d8fff;--txt:#f5f7fa;--txt2:#9ba6b2;
+  --success:#22c55e;--warn:#f59e0b;--danger:#ef4444;
+  --purple:#a855f7;--cyan:#06b6d4;
+  --r:14px;--rsm:9px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ── TOPBAR ── */
+.topbar{position:sticky;top:0;z-index:200;background:rgba(23,28,36,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:56px;display:flex;align-items:center;padding:0 18px;gap:12px}
+.tb-brand{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--txt);font-family:'Syne',sans-serif;font-size:15px;font-weight:800}
+.tb-dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.tb-brand span{color:var(--accent)}
+.tb-back{width:34px;height:34px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--txt2);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;flex-shrink:0}
+.tb-back:hover{border-color:var(--accent);color:var(--accent)}
+.tb-sp{flex:1}
+.tb-acts{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:var(--rsm);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all .18s;text-decoration:none}
+.bp{background:var(--accent);color:#fff}.bp:hover{background:var(--ah)}
+.bg{background:transparent;color:var(--txt2);border:1px solid var(--border)}.bg:hover{color:var(--txt);border-color:var(--txt2)}
+.bd{background:rgba(239,68,68,.1);color:var(--danger);border:1px solid rgba(239,68,68,.2)}
+.bsm{padding:6px 12px;font-size:12px}
+.bxs{padding:4px 9px;font-size:11px}
+
+/* ── PAGE WRAP ── */
+.page-wrap{max-width:1100px;margin:0 auto;padding:24px 20px 100px}
+
+/* ── GUEST WALL ── */
+#guestWall{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;gap:20px;text-align:center;padding:40px 20px}
+#guestWall .gw-icon{font-size:56px;opacity:.25}
+#guestWall h2{font-size:22px;font-weight:700;font-family:'Syne',sans-serif}
+#guestWall p{font-size:14px;color:var(--txt2);max-width:360px;line-height:1.6}
+.gw-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+/* ── PROFILE HEADER ── */
+.prof-header{background:var(--nav);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:20px}
+.banner{height:160px;background:linear-gradient(135deg,#0f1a2e,#1a2540,#0d1520);position:relative;overflow:hidden}
+.banner img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.banner-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(23,28,36,.9) 100%)}
+.banner-deco{position:absolute;inset:0;pointer-events:none}
+.bd-c{position:absolute;border-radius:50%;border:1px solid rgba(74,125,255,.1)}
+.bdc1{width:260px;height:260px;top:-80px;right:60px}
+.bdc2{width:140px;height:140px;top:10px;right:180px;border-color:rgba(168,85,247,.08)}
+.bdc3{width:80px;height:80px;bottom:10px;left:100px;border-color:rgba(6,182,212,.08)}
+.banner-edit-btn{position:absolute;top:12px;right:12px;background:rgba(15,17,21,.7);border:1px solid rgba(255,255,255,.15);color:var(--txt2);font-size:12px;padding:6px 12px;border-radius:var(--rsm);cursor:pointer;font-family:'Poppins',sans-serif;display:none;align-items:center;gap:6px;backdrop-filter:blur(6px);transition:all .18s}
+.banner-edit-btn:hover{color:var(--txt)}
+.is-own .banner-edit-btn{display:flex}
+
+/* Identity strip */
+.identity{padding:0 22px 18px;margin-top:-50px;position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.av-ring{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));padding:3px;flex-shrink:0;position:relative}
+.av-inner{width:100%;height:100%;border-radius:50%;background:var(--bg);overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--accent)}
+.av-inner img{width:100%;height:100%;object-fit:cover}
+.av-edit{position:absolute;bottom:2px;right:2px;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:none;align-items:center;justify-content:center;cursor:pointer;border:2px solid var(--bg);transition:background .18s}
+.av-edit:hover{background:var(--ah)}
+.is-own .av-edit{display:flex}
+.av-progress{position:absolute;bottom:-8px;left:0;right:0;height:3px;background:var(--border);border-radius:2px;overflow:hidden;display:none}
+.av-progress-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .3s}
+
+.ident-info{flex:1;padding-bottom:10px;min-width:0}
+.ident-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.vi-icon{color:var(--accent);font-size:15px;display:none}
+.ident-handle{font-size:13px;color:var(--txt2);margin-top:2px}
+.ident-badges{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.ib{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.02em}
+.ib-admin{background:rgba(239,68,68,.12);color:var(--danger);border:1px solid rgba(239,68,68,.2)}
+.ib-seller{background:rgba(245,158,11,.12);color:var(--warn);border:1px solid rgba(245,158,11,.2)}
+.ib-cs{background:rgba(6,182,212,.12);color:var(--cyan);border:1px solid rgba(6,182,212,.2)}
+.ib-buyer{background:rgba(74,125,255,.12);color:var(--accent);border:1px solid rgba(74,125,255,.2)}
+.ib-verified{background:rgba(74,125,255,.1);color:var(--accent);border:1px solid rgba(74,125,255,.2)}
+
+.ident-acts{padding-bottom:10px;display:flex;gap:8px;align-items:flex-end;flex-wrap:wrap;flex-shrink:0}
+
+/* Stats bar */
+.stats-bar{display:flex;border-top:1px solid var(--border);overflow-x:auto}
+.stats-bar::-webkit-scrollbar{display:none}
+.sb-item{flex:1;min-width:80px;padding:14px 10px;text-align:center;cursor:pointer;border-bottom:2px solid transparent;transition:all .18s;flex-shrink:0}
+.sb-item:hover{background:var(--surface)}
+.sb-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;line-height:1}
+.sb-lab{font-size:10px;color:var(--txt2);font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
+
+/* ── CONTENT GRID ── */
+.content-grid{display:grid;grid-template-columns:280px 1fr;gap:18px}
+
+/* ── PANEL CARD ── */
+.panel{background:var(--nav);border:1px solid var(--border);border-radius:var(--r);margin-bottom:14px;overflow:hidden}
+.panel-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.panel-title{font-size:12px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em}
+.panel-body{padding:16px 18px}
+
+/* ── BALANCE CARD ── */
+.balance-card{background:linear-gradient(135deg,rgba(74,125,255,.15),rgba(124,58,237,.1));border:1px solid rgba(74,125,255,.2);border-radius:var(--r);padding:18px;margin-bottom:14px;position:relative;overflow:hidden}
+.balance-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(74,125,255,.12),transparent 70%);border-radius:50%;pointer-events:none}
+.bc-label{font-size:11px;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px}
+.bc-amount{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--txt);line-height:1.1}
+.bc-sub{font-size:11px;color:var(--txt2);margin-top:4px}
+.bc-actions{display:flex;gap:8px;margin-top:14px}
+.bc-btn{flex:1;padding:9px 0;border-radius:var(--rsm);font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:all .18s;display:flex;align-items:center;justify-content:center;gap:5px}
+.bc-dep{background:var(--accent);color:#fff}.bc-dep:hover{background:var(--ah)}
+.bc-his{background:var(--surface);color:var(--txt2);border:1px solid var(--border)}.bc-his:hover{color:var(--txt);border-color:var(--txt2)}
+
+/* Info list */
+.info-list{display:flex;flex-direction:column;gap:9px}
+.info-row{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--txt2)}
+.info-row i{width:14px;text-align:center;color:var(--accent);font-size:12px;flex-shrink:0}
+.info-row a{color:var(--accent);text-decoration:none}
+.info-row a:hover{text-decoration:underline}
+
+/* Quick links */
+.quick-links{display:flex;flex-direction:column;gap:6px}
+.ql-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:var(--rsm);font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;transition:all .18s;text-decoration:none;border:none;background:none;width:100%;text-align:left}
+.ql-item:hover,.ql-item.active{background:var(--surface);color:var(--txt)}
+.ql-item i{width:16px;text-align:center;font-size:13px}
+.ql-sep{height:1px;background:var(--border);margin:6px 0}
+.ql-danger{color:var(--danger)!important}.ql-danger:hover{background:rgba(239,68,68,.08)!important}
+
+/* Role badge on quick link */
+.ql-rbadge{margin-left:auto;font-size:9px;font-weight:700;padding:2px 7px;border-radius:4px;text-transform:uppercase}
+
+/* ── RIGHT COLUMN: TABS ── */
+.tab-bar{display:flex;background:var(--nav);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:16px;overflow-x:auto}
+.tab-bar::-webkit-scrollbar{display:none}
+.tab-btn{padding:11px 18px;font-size:12px;font-weight:500;color:var(--txt2);cursor:pointer;border:none;background:none;font-family:'Poppins',sans-serif;transition:all .18s;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:6px;border-bottom:2px solid transparent}
+.tab-btn:hover{background:var(--surface);color:var(--txt)}
+.tab-btn.active{background:var(--surface);color:var(--txt);border-bottom-color:var(--accent)}
+.tab-btn .tc{background:var(--accent);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:8px;min-width:16px;text-align:center}
+.tab-panel{display:none}.tab-panel.active{display:block}
+
+/* Overview panel */
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.ov-card{background:var(--nav);border:1px solid var(--border);border-radius:var(--rsm);padding:16px}
+.ov-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:10px}
+.ov-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;line-height:1}
+.ov-lab{font-size:11px;color:var(--txt2);margin-top:3px}
+
+/* Products grid */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.prod-card{background:var(--nav);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .22s}
+.prod-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.pc-img{width:100%;aspect-ratio:16/9;background:var(--surface);overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:22px}
+.pc-img img{width:100%;height:100%;object-fit:cover}
+.pc-body{padding:11px 13px}
+.pc-cat{font-size:10px;font-weight:600;color:var(--accent);background:rgba(74,125,255,.1);padding:2px 7px;border-radius:4px;display:inline-block;margin-bottom:4px}
+.pc-name{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc-price{font-size:14px;font-weight:700;color:var(--accent);margin-top:4px}
+
+/* Activity */
+.act-list{display:flex;flex-direction:column;gap:0}
+.act-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.act-item:last-child{border-bottom:none}
+.act-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px}
+.act-txt{font-size:13px;line-height:1.5}
+.act-txt strong{color:var(--txt)}
+.act-time{font-size:11px;color:var(--txt2);margin-top:2px}
+
+/* Empty state */
+.empty{text-align:center;padding:48px 20px;color:var(--txt2)}
+.empty i{font-size:34px;display:block;margin-bottom:12px;opacity:.3}
+.empty p{font-size:13px}
+
+/* Security panel */
+.sec-section{padding:18px 0;border-bottom:1px solid var(--border)}
+.sec-section:last-child{border-bottom:none}
+.sec-section-title{font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.fg{margin-bottom:13px}
+.fg label{display:block;font-size:12px;color:var(--txt2);margin-bottom:5px;font-weight:500}
+.fg input,.fg textarea,.fg select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:9px 12px;color:var(--txt);font-family:'Poppins',sans-serif;font-size:13px;outline:none;transition:border .18s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--accent)}
+.fg input::placeholder{color:var(--txt2);opacity:.5}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fg-note{font-size:11px;color:var(--txt2);margin-top:4px}
+
+/* Pin input */
+.pin-wrap{display:flex;gap:10px;justify-content:center}
+.pin-dig{width:48px;height:56px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);color:var(--txt);font-size:20px;font-weight:700;text-align:center;outline:none;transition:border .18s}
+.pin-dig:focus{border-color:var(--accent)}
+
+/* Danger zone */
+.danger-zone{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);border-radius:var(--rsm);padding:14px 16px;margin-top:14px}
+.dz-title{font-size:12px;font-weight:600;color:var(--danger);margin-bottom:10px}
+
+/* ── ROLE-SPECIFIC DASHBOARDS ── */
+/* Seller stats */
+.seller-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.ss-card{background:var(--nav);border:1px solid var(--border);border-radius:var(--rsm);padding:16px;text-align:center}
+.ss-val{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;line-height:1}
+.ss-lab{font-size:11px;color:var(--txt2);margin-top:4px}
+
+/* CS card */
+.cs-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.cs-card{background:var(--nav);border:1px solid var(--border);border-radius:var(--rsm);padding:14px}
+.cs-val{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;line-height:1}
+.cs-lab{font-size:11px;color:var(--txt2);margin-top:3px}
+
+/* Chip badge */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600}
+.chip-g{background:rgba(34,197,94,.12);color:var(--success);border:1px solid rgba(34,197,94,.2)}
+.chip-y{background:rgba(245,158,11,.12);color:var(--warn);border:1px solid rgba(245,158,11,.2)}
+.chip-r{background:rgba(239,68,68,.12);color:var(--danger);border:1px solid rgba(239,68,68,.2)}
+
+/* ── MODALS ── */
+.mo{position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;padding:20px}
+.mo.open{display:flex}
+.mb{background:var(--nav);border:1px solid var(--border);border-radius:var(--r);width:100%;animation:fup .3s ease;overflow:hidden}
+@keyframes fup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.mh{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.mh h3{font-size:16px;font-weight:700;font-family:'Syne',sans-serif}
+.mbody{padding:20px;overflow-y:auto;max-height:78vh}
+.mbody::-webkit-scrollbar{width:4px}
+.mfoot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+.mc{background:none;border:none;color:var(--txt2);font-size:18px;cursor:pointer}
+.mc:hover{color:var(--txt)}
+
+/* Upload bar */
+.upload-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;display:none;margin:8px 0}
+.upload-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .3s}
+
+/* Char count */
+.char-count{font-size:11px;color:var(--txt2);text-align:right;margin-top:3px}
+
+/* ── TOAST ── */
+#tc{position:fixed;bottom:80px;right:16px;z-index:9999;display:flex;flex-direction:column;gap:8px}
+@media(min-width:901px){#tc{bottom:20px;right:20px}}
+.toast{background:var(--nav);border:1px solid var(--border);border-left:3px solid var(--accent);color:var(--txt);font-size:13px;padding:10px 16px;border-radius:var(--rsm);min-width:240px;animation:sli .3s ease}
+.toast.s{border-left-color:var(--success)}.toast.e{border-left-color:var(--danger)}.toast.w{border-left-color:var(--warn)}
+@keyframes sli{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+
+/* ── SPINNER ── */
+.sp{width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spn .7s linear infinite;margin:0 auto}
+@keyframes spn{to{transform:rotate(360deg)}}
+.lc{display:flex;align-items:center;justify-content:center;padding:48px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .content-grid{grid-template-columns:1fr}
+  .left-col-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  #topbar{display:none!important}
+  #mobileHdr{display:flex!important}
+  #xbn{display:flex!important}
+  .page-wrap{padding:14px 12px 90px}
+  .overview-grid{grid-template-columns:1fr 1fr}
+  .seller-stats{grid-template-columns:1fr 1fr}
+  .mo{padding:0;align-items:flex-end}
+  .mb{border-radius:20px 20px 0 0}
+  .mbody{max-height:75vh}
+}
+@media(max-width:600px){
+  .identity{flex-direction:column;align-items:flex-start;margin-top:-38px;gap:10px}
+  .ident-acts{width:100%}
+  .av-ring{width:80px;height:80px}
+  .av-inner{font-size:26px}
+  .ident-name{font-size:19px}
+  .left-col-wrap{grid-template-columns:1fr}
+  .overview-grid{grid-template-columns:1fr 1fr}
+  .seller-stats{grid-template-columns:1fr}
+  .fg2{grid-template-columns:1fr}
+  .banner{height:140px}
+}
+@media(max-width:380px){
+  .overview-grid{grid-template-columns:1fr}
+  .bc-actions{flex-direction:column}
+}
+@media(min-width:901px){
+  #xbn{display:none!important}
+  #mobileHdr{display:none!important}
+  #topbar{display:flex!important}
+}
+
+/* Mobile header */
+#mobileHdr{display:none;position:sticky;top:0;z-index:300;background:var(--nav);border-bottom:1px solid var(--border);height:52px;align-items:center;padding:0 14px;gap:12px}
+.mhb{width:34px;height:34px;border-radius:50%;background:var(--surface);border:1px solid var(--border);color:var(--txt2);font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.mhb:active{transform:scale(.9)}
+.mh-title{font-size:15px;font-weight:700;flex:1}
+.mh-logo{font-size:11px;font-weight:700;color:var(--accent);opacity:.7;font-family:'Syne',sans-serif}
+
+/* Bottom Nav */
+#xbn{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(23,28,36,.97);backdrop-filter:blur(20px);border-top:1px solid rgba(74,125,255,.18);height:64px;padding:0 8px;padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -4px 24px rgba(0,0,0,.5)}
+.xbn-inner{display:flex;align-items:center;width:100%;height:100%}
+.xbn-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;border:none;cursor:pointer;color:#6b7a8d;font-family:'Poppins',sans-serif;padding:4px 0;position:relative;overflow:hidden;transition:color .2s;border-radius:12px;min-height:52px;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.xbn-btn i{font-size:20px;line-height:1;transition:transform .25s cubic-bezier(.34,1.56,.64,1),color .2s;display:block}
+.xbn-btn span{font-size:10px;font-weight:600;letter-spacing:.02em;line-height:1}
+.xbn-btn.active{color:var(--accent)}.xbn-btn.active i{transform:translateY(-2px) scale(1.15);color:var(--accent)}
+.xbn-btn::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:0;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .25s cubic-bezier(.34,1.56,.64,1)}
+.xbn-btn.active::after{width:24px}
+.xbn-btn:active{transform:scale(.88)}
+.xbn-fab-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:6px;gap:2px}
+.xbn-fab{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#4a7dff,#7c3aed);color:#fff;font-size:22px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(74,125,255,.55);-webkit-tap-highlight-color:transparent;transition:transform .2s cubic-bezier(.34,1.56,.64,1)}
+.xbn-fab:active{transform:scale(.85)}
+.xbn-fab-label{font-size:10px;font-weight:600;color:var(--txt2)}
+.xbn-av{width:26px;height:26px;border-radius:50%;background:var(--surface);border:2px solid transparent;overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#6b7a8d;transition:border-color .2s}
+.xbn-av img{width:100%;height:100%;object-fit:cover}
+.xbn-btn.active .xbn-av{border-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR (desktop) -->
+<nav id="topbar" class="topbar" style="display:none">
+  <button class="tb-back" onclick="history.length>1?history.back():location.href='index.html'"><i class="fas fa-arrow-left"></i></button>
+  <a class="tb-brand" href="index.html"><div class="tb-dot"></div>XREZZKY<span>STORE</span></a>
+  <div class="tb-sp"></div>
+  <div class="tb-acts" id="tbActs"></div>
+</nav>
+
+<!-- MOBILE HEADER -->
+<div id="mobileHdr">
+  <button class="mhb" onclick="history.length>1?history.back():location.href='index.html'"><i class="fas fa-arrow-left"></i></button>
+  <div class="mh-title">Profil</div>
+  <div class="mh-logo">XREZZKY</div>
+</div>
+
+<!-- BOTTOM NAV -->
+<div id="xbn">
+  <div class="xbn-inner">
+    <a class="xbn-btn" href="index.html"><i class="fas fa-home"></i><span>Beranda</span></a>
+    <button class="xbn-btn" onclick="location.href='index.html#info'"><i class="fas fa-bell"></i><span>Info</span></button>
+    <div class="xbn-fab-wrap">
+      <button class="xbn-fab" onclick="goDeposit()"><i class="fas fa-wallet"></i></button>
+      <span class="xbn-fab-label">Deposit</span>
+    </div>
+    <a class="xbn-btn" href="riwayat.html"><i class="fas fa-receipt"></i><span>Riwayat</span></a>
+    <a class="xbn-btn active" href="profil.html"><div class="xbn-av" id="xbnAv"><i class="fas fa-user-circle"></i></div><span>Profil</span></a>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="tc"></div>
+
+<!-- GUEST WALL -->
+<div id="guestWall">
+  <i class="fas fa-user-lock gw-icon"></i>
+  <h2>Masuk untuk melihat profil</h2>
+  <p>Buat akun atau masuk untuk mengakses profil, deposit saldo, dan mulai belanja di XREZZKY.</p>
+  <div class="gw-btns">
+    <button class="btn bp" onclick="location.href='index.html?auth=login'"><i class="fas fa-sign-in-alt"></i> Masuk</button>
+    <button class="btn bg" onclick="location.href='index.html?auth=register'"><i class="fas fa-user-plus"></i> Daftar</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT (hidden until auth) -->
+<div id="mainContent" style="display:none">
+<div class="page-wrap">
+
+  <!-- PROFILE HEADER -->
+  <div class="prof-header" id="profHeader">
+    <div class="banner" id="bannerWrap">
+      <div class="banner-deco">
+        <div class="bd-c bdc1"></div>
+        <div class="bd-c bdc2"></div>
+        <div class="bd-c bdc3"></div>
+      </div>
+      <div class="banner-overlay"></div>
+      <button class="banner-edit-btn" onclick="triggerBannerUpload()"><i class="fas fa-camera"></i> Ganti Banner</button>
+      <input type="file" id="bannerFileInput" accept="image/*" style="display:none" onchange="uploadBanner(event)"/>
+    </div>
+    <div class="identity">
+      <div class="av-ring">
+        <div class="av-inner" id="mainAv">?</div>
+        <div class="av-edit" onclick="document.getElementById('avFileInput').click()"><i class="fas fa-camera"></i></div>
+        <div class="av-progress" id="avBar"><div class="av-progress-fill" id="avFill" style="width:0%"></div></div>
+      </div>
+      <input type="file" id="avFileInput" accept="image/*" style="display:none" onchange="uploadAvatar(event)"/>
+      <div class="ident-info">
+        <div class="ident-name">
+          <span id="dName">—</span>
+          <i class="fas fa-circle-check vi-icon" id="viIcon"></i>
+        </div>
+        <div class="ident-handle" id="dHandle">@—</div>
+        <div class="ident-badges" id="dBadges"></div>
+      </div>
+      <div class="ident-acts" id="dActs"></div>
+    </div>
+    <div class="stats-bar" id="statsBar">
+      <div class="sb-item"><div class="sb-val" id="st-orders">—</div><div class="sb-lab">Pesanan</div></div>
+      <div class="sb-item"><div class="sb-val" id="st-balance">—</div><div class="sb-lab">Saldo</div></div>
+      <div class="sb-item"><div class="sb-val" id="st-xp">—</div><div class="sb-lab">XP</div></div>
+      <div class="sb-item" id="st-seller-item" style="display:none"><div class="sb-val" id="st-sold">—</div><div class="sb-lab">Terjual</div></div>
+      <div class="sb-item" id="st-prod-item" style="display:none"><div class="sb-val" id="st-prods">—</div><div class="sb-lab">Produk</div></div>
+    </div>
+  </div>
+
+  <!-- CONTENT GRID -->
+  <div class="content-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="left-col-wrap">
+
+      <!-- Balance Card -->
+      <div class="balance-card">
+        <div class="bc-label"><i class="fas fa-wallet" style="margin-right:5px"></i>Saldo Saya</div>
+        <div class="bc-amount" id="bcAmount">Rp 0</div>
+        <div class="bc-sub" id="bcSub">Siap digunakan</div>
+        <div class="bc-actions">
+          <button class="bc-btn bc-dep" onclick="goDeposit()"><i class="fas fa-plus"></i> Deposit</button>
+          <button class="bc-btn bc-his" onclick="location.href='riwayat.html'"><i class="fas fa-receipt"></i> Riwayat</button>
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="panel">
+        <div class="panel-head"><span class="panel-title">Info</span></div>
+        <div class="panel-body">
+          <div class="info-list" id="infoList"></div>
+        </div>
+      </div>
+
+      <!-- Quick Nav (role-based) -->
+      <div class="panel">
+        <div class="panel-head"><span class="panel-title">Navigasi</span></div>
+        <div class="panel-body" style="padding:8px 10px">
+          <div class="quick-links" id="quickLinks"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+
+      <!-- TAB BAR (role-based) -->
+      <div class="tab-bar" id="tabBar"></div>
+
+      <!-- PANEL: OVERVIEW (all roles) -->
+      <div class="tab-panel active" id="tp-overview">
+        <div class="overview-grid" id="overviewGrid"></div>
+        <!-- Bio -->
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Bio</span>
+            <button class="btn bg bxs is-own-show" onclick="openBioEdit()"><i class="fas fa-pen"></i> Edit</button>
+          </div>
+          <div class="panel-body">
+            <div id="bioText" style="font-size:13px;color:var(--txt2);line-height:1.7"></div>
+            <div id="bioEditArea" style="display:none">
+              <textarea id="bioInp" rows="4" maxlength="200" placeholder="Ceritakan tentang dirimu..." oninput="document.getElementById('bioCc').textContent=this.value.length+'/200'" style="width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:9px 12px;color:var(--txt);font-family:'Poppins',sans-serif;font-size:13px;resize:none;outline:none;min-height:80px"></textarea>
+              <div class="char-count" id="bioCc">0/200</div>
+              <div style="display:flex;gap:8px;margin-top:10px">
+                <button class="btn bg bsm" onclick="cancelBio()">Batal</button>
+                <button class="btn bp bsm" onclick="saveBio()"><i class="fas fa-check"></i> Simpan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Activity -->
+        <div class="panel">
+          <div class="panel-head"><span class="panel-title">Aktivitas</span></div>
+          <div class="panel-body" style="padding:0 18px"><div class="act-list" id="actList"></div></div>
+        </div>
+      </div>
+
+      <!-- PANEL: BUYER ORDERS -->
+      <div class="tab-panel" id="tp-pesanan">
+        <div class="panel">
+          <div class="panel-head"><span class="panel-title">Riwayat Pesanan</span><a href="riwayat.html" class="btn bg bxs"><i class="fas fa-arrow-right"></i> Semua</a></div>
+          <div class="panel-body"><div id="buyerOrders"></div></div>
+        </div>
+      </div>
+
+      <!-- PANEL: SELLER DASHBOARD -->
+      <div class="tab-panel" id="tp-seller">
+        <div class="seller-stats" id="sellerStats"></div>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Produk Saya</span>
+            <a href="seller-dashboard.html" class="btn bp bxs"><i class="fas fa-store"></i> Dashboard</a>
+          </div>
+          <div class="panel-body">
+            <div class="prod-grid" id="sellerProds"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL: CS DASHBOARD -->
+      <div class="tab-panel" id="tp-cs">
+        <div class="cs-info-grid" id="csCards"></div>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Customer Service</span>
+            <a href="cs-dashboard.html" class="btn bp bxs"><i class="fas fa-headset"></i> CS Dashboard</a>
+          </div>
+          <div class="panel-body">
+            <div style="text-align:center;padding:32px;color:var(--txt2)">
+              <i class="fas fa-headset" style="font-size:36px;display:block;margin-bottom:12px;opacity:.3"></i>
+              <p style="font-size:13px">Kelola tiket dan bantu pelanggan dari CS Dashboard.</p>
+              <a href="cs-dashboard.html" class="btn bp bsm" style="margin-top:16px;display:inline-flex"><i class="fas fa-arrow-right"></i> Buka CS Dashboard</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL: ADMIN DASHBOARD -->
+      <div class="tab-panel" id="tp-admin">
+        <div class="overview-grid" id="adminCards"></div>
+        <div class="panel">
+          <div class="panel-head"><span class="panel-title">Panel Admin</span><a href="admin-panel.html" class="btn bp bxs"><i class="fas fa-shield"></i> Admin Panel</a></div>
+          <div class="panel-body" style="display:flex;flex-wrap:wrap;gap:10px" id="adminLinks"></div>
+        </div>
+      </div>
+
+      <!-- PANEL: KEAMANAN -->
+      <div class="tab-panel" id="tp-keamanan">
+        <div class="panel">
+          <div class="panel-head"><span class="panel-title"><i class="fas fa-shield-halved" style="color:var(--accent);margin-right:6px"></i>Keamanan Akun</span></div>
+          <div class="panel-body">
+
+            <!-- Ganti Sandi -->
+            <div class="sec-section">
+              <div class="sec-section-title"><i class="fas fa-key" style="color:var(--warn)"></i>Ganti Password</div>
+              <div class="fg"><label>Password Baru</label><input type="password" id="p1" placeholder="min. 6 karakter"/></div>
+              <div class="fg"><label>Konfirmasi Password</label><input type="password" id="p2" placeholder="ulangi password"/></div>
+              <button class="btn bp bsm" onclick="changePass()"><i class="fas fa-lock"></i> Update Password</button>
+            </div>
+
+            <!-- PIN Transaksi -->
+            <div class="sec-section">
+              <div class="sec-section-title"><i class="fas fa-hashtag" style="color:var(--cyan)"></i>PIN Transaksi</div>
+              <p style="font-size:12px;color:var(--txt2);margin-bottom:14px;line-height:1.6">PIN 6 digit digunakan untuk konfirmasi setiap transaksi. <span id="pinStatus"></span></p>
+              <div style="margin-bottom:14px">
+                <label style="font-size:12px;color:var(--txt2);display:block;margin-bottom:10px;font-weight:500">PIN Baru (6 digit)</label>
+                <div class="pin-wrap" id="pinInputWrap">
+                  <input class="pin-dig" id="pin0" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(0)" />
+                  <input class="pin-dig" id="pin1" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(1)" onkeydown="pinBack(1,event)" />
+                  <input class="pin-dig" id="pin2" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(2)" onkeydown="pinBack(2,event)" />
+                  <input class="pin-dig" id="pin3" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(3)" onkeydown="pinBack(3,event)" />
+                  <input class="pin-dig" id="pin4" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(4)" onkeydown="pinBack(4,event)" />
+                  <input class="pin-dig" id="pin5" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(5)" onkeydown="pinBack(5,event)" />
+                </div>
+              </div>
+              <div style="margin-bottom:14px">
+                <label style="font-size:12px;color:var(--txt2);display:block;margin-bottom:10px;font-weight:500">Konfirmasi PIN</label>
+                <div class="pin-wrap">
+                  <input class="pin-dig" id="cpin0" maxlength="1" type="password" inputmode="numeric" oninput="cpinNext(0)" />
+                  <input class="pin-dig" id="cpin1" maxlength="1" type="password" inputmode="numeric" oninput="cpinNext(1)" onkeydown="cpinBack(1,event)" />
+                  <input class="pin-dig" id="cpin2" maxlength="1" type="password" inputmode="numeric" oninput="cpinNext(2)" onkeydown="cpinBack(2,event)" />
+                  <input class="pin-dig" id="cpin3" maxlength="1" type="password" inputmode="numeric" oninput="cpinNext(3)" onkeydown="cpinBack(3,event)" />
+                  <input class="pin-dig" id="cpin4" maxlength="1" type="password" inputmode="numeric" oninput="cpinNext(4)" onkeydown="cpinBack(4,event)" />
+                  <input class="pin-dig" id="cpin5" maxlength="1" type="password" inputmode="numeric" oninput="cpinNext(5)" onkeydown="cpinBack(5,event)" />
+                </div>
+              </div>
+              <button class="btn bp bsm" onclick="savePin()"><i class="fas fa-hashtag"></i> Simpan PIN</button>
+            </div>
+
+            <!-- Email -->
+            <div class="sec-section">
+              <div class="sec-section-title"><i class="fas fa-envelope" style="color:var(--accent)"></i>Email Akun</div>
+              <div class="fg"><label>Email (tidak dapat diubah)</label><input type="email" id="acEmail" disabled style="opacity:.5"/></div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="danger-zone">
+              <div class="dz-title"><i class="fas fa-triangle-exclamation"></i> Zona Berbahaya</div>
+              <button class="btn bd bsm" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Keluar dari Akun</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL: EDIT PROFIL -->
+      <div class="tab-panel" id="tp-editprofil">
+        <div class="panel">
+          <div class="panel-head"><span class="panel-title"><i class="fas fa-pen" style="color:var(--accent);margin-right:6px"></i>Edit Profil</span></div>
+          <div class="panel-body">
+            <!-- Avatar -->
+            <div style="display:flex;align-items:center;gap:16px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);margin-bottom:18px">
+              <div style="width:56px;height:56px;border-radius:50%;background:var(--nav);border:2px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--accent);flex-shrink:0" id="editAvPrev"></div>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:600">Foto Profil</div>
+                <div style="font-size:11px;color:var(--txt2);margin-top:2px">JPG, PNG, WebP — maks 3MB</div>
+              </div>
+              <button class="btn bg bxs" onclick="document.getElementById('avFileInput').click()"><i class="fas fa-upload"></i> Ganti</button>
+            </div>
+            <!-- Fields -->
+            <div class="fg2">
+              <div class="fg"><label>Username *</label><input type="text" id="eu" placeholder="username"/></div>
+              <div class="fg"><label>Nama Lengkap</label><input type="text" id="efn" placeholder="Nama lengkap"/></div>
+            </div>
+            <div class="fg2">
+              <div class="fg"><label>No. WhatsApp</label><input type="text" id="ewa" placeholder="+62..."/></div>
+              <div class="fg"><label>Lokasi</label><input type="text" id="eloc" placeholder="Kota, Provinsi"/></div>
+            </div>
+            <div class="fg"><label>Website</label><input type="url" id="eweb" placeholder="https://..."/></div>
+            <!-- Store info (seller/admin only) -->
+            <div id="storeFields" style="display:none">
+              <div style="height:1px;background:var(--border);margin:16px 0"></div>
+              <div style="font-size:12px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px">Info Toko</div>
+              <div class="fg"><label>Nama Toko</label><input type="text" id="esn" placeholder="Nama toko"/></div>
+              <div class="fg"><label>Deskripsi Toko</label><textarea id="esd" rows="3" placeholder="Tentang toko..."></textarea></div>
+              <div class="fg2">
+                <div class="fg"><label>Kategori</label>
+                  <select id="esc">
+                    <option value="">— pilih —</option>
+                    <option value="akun">Akun Gaming</option>
+                    <option value="joki">Joki & Layanan</option>
+                    <option value="item">Item & Skin</option>
+                    <option value="top-up">Top Up</option>
+                    <option value="digital">Digital</option>
+                  </select>
+                </div>
+                <div class="fg"><label>Jam Operasional</label><input type="text" id="ehs" placeholder="08.00 – 22.00"/></div>
+              </div>
+            </div>
+            <!-- Social -->
+            <div style="height:1px;background:var(--border);margin:16px 0"></div>
+            <div style="font-size:12px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px">Sosial Media</div>
+            <div class="fg2">
+              <div class="fg"><label><i class="fab fa-telegram" style="color:#26a5e4"></i> Telegram</label><input type="text" id="etg" placeholder="@username"/></div>
+              <div class="fg"><label><i class="fab fa-instagram" style="color:#e1306c"></i> Instagram</label><input type="text" id="eig" placeholder="@username"/></div>
+            </div>
+            <div class="fg2">
+              <div class="fg"><label><i class="fab fa-twitter" style="color:#1d9bf0"></i> Twitter/X</label><input type="text" id="etw" placeholder="@username"/></div>
+              <div class="fg"><label><i class="fab fa-discord" style="color:#5865f2"></i> Discord</label><input type="text" id="edi" placeholder="username#0000"/></div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="btn bg" onclick="switchTab('overview')">Batal</button>
+              <button class="btn bp" onclick="saveProfile()"><i class="fas fa-save"></i> Simpan Perubahan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- right-col -->
+  </div><!-- content-grid -->
+</div><!-- page-wrap -->
+</div><!-- mainContent -->
+
+<!-- ══════════════════════════ SCRIPT ══════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ═══ CONFIG ═══
+const SUPA_URL  = 'https://jydfjfjttpmropoczgop.supabase.co';
+const SUPA_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5ZGZqZmp0dHBtcm9wb2N6Z29wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgxMDgyNTEsImV4cCI6MjA5MzY4NDI1MX0.CyxQU-zng4OBP1kOlZEn0UZVGurfVp6TfNWS_zOaf3s';
+const CLD_CLOUD  = 'drjmclzbi';
+const CLD_PRESET = 'xrezzky_unsigned';
+const CLD_BASE   = `https://res.cloudinary.com/${CLD_CLOUD}/image/upload/`;
+const CLD_UP     = `https://api.cloudinary.com/v1_1/${CLD_CLOUD}/image/upload`;
+
+const sb = supabase.createClient(SUPA_URL, SUPA_KEY);
+
+// ═══ STATE ═══
+let cUser    = null;  // supabase auth user
+let cProfile = null;  // profiles row
+let myOrders = [];
+let myProds  = [];
+let activeTab = 'overview';
+
+// ═══ INIT ═══
+document.addEventListener('DOMContentLoaded', async () => {
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity .22s ease';
+
+  const { data: { session } } = await sb.auth.getSession();
+
+  if (!session) {
+    // Show guest wall — must register/login to view profile
+    document.getElementById('guestWall').style.display = 'flex';
+    requestAnimationFrame(() => document.body.style.opacity = '1');
+    return;
+  }
+
+  cUser = session.user;
+  await loadProfile();
+  await Promise.all([loadOrders(), loadProducts()]);
+
+  buildPage();
+  document.getElementById('mainContent').style.display = 'block';
+  document.body.classList.add('is-own');
+  requestAnimationFrame(() => document.body.style.opacity = '1');
+
+  // Update XBN avatar
+  updateXbnAv();
+});
+
+// ═══ LOAD DATA ═══
+async function loadProfile() {
+  const { data } = await sb.from('profiles').select('*').eq('id', cUser.id).maybeSingle();
+  cProfile = data || { id: cUser.id, username: cUser.email.split('@')[0], email: cUser.email, role: 'buyer', balance: 0 };
+}
+
+async function loadOrders() {
+  const { data } = await sb.from('orders').select('*, products(name, price, image_url, category)').eq('buyer_id', cUser.id).order('created_at', { ascending: false }).limit(20);
+  myOrders = data || [];
+}
+
+async function loadProducts() {
+  if (!cProfile || !['seller','admin'].includes(cProfile.role)) return;
+  const { data } = await sb.from('products').select('*').eq('seller_id', cUser.id).order('created_at', { ascending: false });
+  myProds = data || [];
+}
+
+// ═══ BUILD PAGE ═══
+function buildPage() {
+  buildHeader();
+  buildStats();
+  buildBalance();
+  buildInfoList();
+  buildQuickLinks();
+  buildTabs();
+  buildOverview();
+  buildOrders();
+  buildSellerPanel();
+  buildCsPanel();
+  buildAdminPanel();
+  fillEditForm();
+  showSecurityEmail();
+  updatePinStatus();
+  switchTab('overview');
+}
+
+// ── HEADER ──
+function buildHeader() {
+  const p = cProfile;
+  const nm = p.username || 'User';
+
+  // Avatar
+  const avEl = document.getElementById('mainAv');
+  avEl.innerHTML = p.avatar_url ? `<img src="${CLD_BASE}${p.avatar_url}" alt="${esc(nm)}"/>` : nm[0].toUpperCase();
+
+  // Update edit preview
+  const epEl = document.getElementById('editAvPrev');
+  if (epEl) epEl.innerHTML = avEl.innerHTML;
+
+  // Banner
+  if (p.store_banner) {
+    const bw = document.getElementById('bannerWrap');
+    const img = document.createElement('img');
+    img.src = CLD_BASE + p.store_banner;
+    img.style = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0';
+    bw.insertBefore(img, bw.firstChild);
+  }
+
+  document.getElementById('dName').textContent    = p.store_name || nm;
+  document.getElementById('dHandle').textContent  = `@${nm}`;
+  document.title = `${nm} — XREZZKY`;
+  document.getElementById('mh-title') && (document.getElementById('mh-title').textContent = nm);
+
+  // Verified icon
+  if (['seller','admin'].includes(p.role)) document.getElementById('viIcon').style.display = 'inline';
+
+  // Badges
+  const roleColor = { admin:'ib-admin', seller:'ib-seller', cs:'ib-cs', buyer:'ib-buyer' };
+  const roleLabel = { admin:'<i class="fas fa-shield"></i> Admin', seller:'<i class="fas fa-store"></i> Seller', cs:'<i class="fas fa-headset"></i> CS', buyer:'<i class="fas fa-user"></i> Buyer' };
+  let badges = `<span class="ib ${roleColor[p.role]||'ib-buyer'}">${roleLabel[p.role]||'Buyer'}</span>`;
+  if (p.is_verified) badges += `<span class="ib ib-verified"><i class="fas fa-circle-check"></i> Verified</span>`;
+  document.getElementById('dBadges').innerHTML = badges;
+
+  // Edit button
+  document.getElementById('dActs').innerHTML = `
+    <button class="btn bp" onclick="switchTab('editprofil')"><i class="fas fa-pen"></i> Edit Profil</button>
+    <button class="btn bg" onclick="switchTab('keamanan')"><i class="fas fa-shield-halved"></i></button>`;
+
+  // Topbar acts
+  document.getElementById('tbActs').innerHTML = `
+    <button class="btn bg bsm" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>`;
+}
+
+// ── STATS BAR ──
+function buildStats() {
+  const p = cProfile;
+  const totalSold = myProds.reduce((a,x)=>a+(x.sold_count||0),0);
+
+  animVal('st-orders',  myOrders.length);
+  animVal('st-balance', null, fmtRp(p.balance||0));
+  animVal('st-xp',      p.xp||0);
+
+  const isSeller = ['seller','admin'].includes(p.role);
+  document.getElementById('st-seller-item').style.display = isSeller ? 'block' : 'none';
+  document.getElementById('st-prod-item').style.display   = isSeller ? 'block' : 'none';
+  if (isSeller) {
+    animVal('st-sold',  totalSold);
+    animVal('st-prods', myProds.length);
+  }
+}
+
+// ── BALANCE CARD ──
+function buildBalance() {
+  const p = cProfile;
+  document.getElementById('bcAmount').textContent = fmtRp(p.balance||0);
+  const pin = p.transaction_pin ? 'PIN aktif ✓' : 'Belum ada PIN';
+  document.getElementById('bcSub').textContent = `Saldo tersedia · ${pin}`;
+}
+
+// ── INFO LIST ──
+function buildInfoList() {
+  const p = cProfile;
+  const rows = [];
+  if (p.location)   rows.push(`<div class="info-row"><i class="fas fa-location-dot"></i><span>${esc(p.location)}</span></div>`);
+  if (p.whatsapp)   rows.push(`<div class="info-row"><i class="fab fa-whatsapp" style="color:#25d366"></i><a href="https://wa.me/${(p.whatsapp||'').replace(/\D/g,'')}" target="_blank">${esc(p.whatsapp)}</a></div>`);
+  if (p.website)    rows.push(`<div class="info-row"><i class="fas fa-link"></i><a href="${esc(p.website)}" target="_blank">${esc(p.website.replace('https://',''))}</a></div>`);
+  if (p.telegram)   rows.push(`<div class="info-row"><i class="fab fa-telegram" style="color:#26a5e4"></i><a href="${p.telegram.startsWith('http')?p.telegram:'https://t.me/'+p.telegram.replace('@','')}" target="_blank">${esc(p.telegram)}</a></div>`);
+  if (p.created_at) rows.push(`<div class="info-row"><i class="fas fa-calendar"></i><span>Bergabung ${fmtDate(p.created_at)}</span></div>`);
+  document.getElementById('infoList').innerHTML = rows.join('') || `<div style="font-size:12px;color:var(--txt2);opacity:.5;font-style:italic">Belum ada info.</div>`;
+}
+
+// ── QUICK LINKS (role-based) ──
+function buildQuickLinks() {
+  const role = cProfile?.role || 'buyer';
+  let html = `
+    <a class="ql-item" href="index.html"><i class="fas fa-store"></i> Beranda</a>
+    <a class="ql-item" href="riwayat.html"><i class="fas fa-receipt"></i> Riwayat Pesanan</a>
+    <button class="ql-item" onclick="goDeposit()"><i class="fas fa-wallet"></i> Deposit Saldo</button>`;
+
+  if (['seller','admin'].includes(role)) {
+    html += `<div class="ql-sep"></div>
+    <div style="font-size:10px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;padding:4px 12px">Seller</div>
+    <a class="ql-item" href="seller-dashboard.html"><i class="fas fa-store"></i> Dashboard Seller<span class="ql-rbadge" style="background:rgba(245,158,11,.15);color:var(--warn)">Seller</span></a>
+    <a class="ql-item" href="seller-dashboard.html?tab=produk"><i class="fas fa-boxes-stacked"></i> Produk Saya</a>
+    <a class="ql-item" href="seller-dashboard.html?tab=orders"><i class="fas fa-inbox"></i> Pesanan Masuk</a>`;
+  }
+
+  if (['cs','admin'].includes(role)) {
+    html += `<div class="ql-sep"></div>
+    <div style="font-size:10px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;padding:4px 12px">CS</div>
+    <a class="ql-item" href="cs-dashboard.html"><i class="fas fa-headset"></i> CS Dashboard<span class="ql-rbadge" style="background:rgba(6,182,212,.12);color:var(--cyan)">CS</span></a>`;
+  }
+
+  if (role === 'admin') {
+    html += `<div class="ql-sep"></div>
+    <div style="font-size:10px;font-weight:600;color:var(--txt2);text-transform:uppercase;letter-spacing:.07em;padding:4px 12px">Admin</div>
+    <a class="ql-item" href="admin-panel.html"><i class="fas fa-chart-pie"></i> Admin Panel<span class="ql-rbadge" style="background:rgba(239,68,68,.1);color:var(--danger)">Admin</span></a>
+    <a class="ql-item" href="deposit-admin.html"><i class="fas fa-qrcode"></i> Kelola Deposit</a>
+    <a class="ql-item" href="info-admin.html"><i class="fas fa-bell"></i> Kelola Info</a>`;
+  }
+
+  html += `<div class="ql-sep"></div>
+    <button class="ql-item ql-danger" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Keluar</button>`;
+
+  document.getElementById('quickLinks').innerHTML = html;
+}
+
+// ── TABS (role-based) ──
+function buildTabs() {
+  const role = cProfile?.role || 'buyer';
+  const tabs = [
+    { id:'overview',    label:'<i class="fas fa-home"></i> Overview', roles:['buyer','seller','cs','admin'] },
+    { id:'pesanan',     label:'<i class="fas fa-receipt"></i> Pesanan', roles:['buyer','seller','cs','admin'] },
+    { id:'seller',      label:'<i class="fas fa-store"></i> Seller',   roles:['seller','admin'] },
+    { id:'cs',          label:'<i class="fas fa-headset"></i> CS',     roles:['cs','admin'] },
+    { id:'admin',       label:'<i class="fas fa-shield"></i> Admin',   roles:['admin'] },
+    { id:'keamanan',    label:'<i class="fas fa-lock"></i> Keamanan',  roles:['buyer','seller','cs','admin'] },
+    { id:'editprofil',  label:'<i class="fas fa-pen"></i> Edit',       roles:['buyer','seller','cs','admin'] },
+  ];
+
+  const bar = document.getElementById('tabBar');
+  bar.innerHTML = tabs
+    .filter(t => t.roles.includes(role))
+    .map(t => `<button class="tab-btn" id="tab-${t.id}" onclick="switchTab('${t.id}')">${t.label}</button>`)
+    .join('');
+}
+
+function switchTab(id) {
+  activeTab = id;
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById(`tp-${id}`);
+  if (panel) panel.classList.add('active');
+  const btn = document.getElementById(`tab-${id}`);
+  if (btn) btn.classList.add('active');
+  // Scroll to top on mobile
+  if (window.innerWidth <= 900) window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── OVERVIEW ──
+function buildOverview() {
+  const p = cProfile;
+  const role = p.role || 'buyer';
+  const totalSold = myProds.reduce((a,x)=>a+(x.sold_count||0),0);
+
+  const cards = [
+    { icon:'fas fa-receipt', bg:'rgba(74,125,255,.1)', col:'var(--accent)',  val:myOrders.length, lab:'Total Pesanan' },
+    { icon:'fas fa-wallet',  bg:'rgba(34,197,94,.1)',  col:'var(--success)', val:fmtRp(p.balance||0), lab:'Saldo' },
+  ];
+  if (['seller','admin'].includes(role)) {
+    cards.push({ icon:'fas fa-boxes-stacked', bg:'rgba(245,158,11,.1)', col:'var(--warn)', val:myProds.length, lab:'Produk Aktif' });
+    cards.push({ icon:'fas fa-fire',          bg:'rgba(239,68,68,.1)', col:'var(--danger)', val:totalSold, lab:'Total Terjual' });
+  } else {
+    cards.push({ icon:'fas fa-star', bg:'rgba(245,158,11,.1)', col:'var(--warn)', val:(p.xp||0)+' XP', lab:'Experience' });
+    cards.push({ icon:'fas fa-calendar', bg:'rgba(168,85,247,.1)', col:'var(--purple)', val:fmtDate(p.created_at), lab:'Bergabung' });
+  }
+
+  document.getElementById('overviewGrid').innerHTML = cards.map(c => `
+    <div class="ov-card">
+      <div class="ov-icon" style="background:${c.bg};color:${c.col}"><i class="${c.icon}"></i></div>
+      <div class="ov-val" style="color:${c.col}">${typeof c.val==='number'?c.val.toLocaleString('id-ID'):c.val}</div>
+      <div class="ov-lab">${c.lab}</div>
+    </div>`).join('');
+
+  // Bio
+  const bioEl = document.getElementById('bioText');
+  bioEl.style.cssText = 'font-size:13px;color:var(--txt2);line-height:1.7';
+  bioEl.innerHTML = p.bio ? esc(p.bio) : '<span style="font-style:italic;opacity:.5">Belum ada bio. Klik Edit untuk menambahkan.</span>';
+
+  // Activity
+  const acts = [];
+  myOrders.slice(0,4).forEach(o => acts.push({
+    icon:'fas fa-shopping-cart', col:'var(--accent)',
+    txt:`Membeli <strong>${esc(o.products?.name||'Produk')}</strong>`, time: o.created_at
+  }));
+  const feed = document.getElementById('actList');
+  feed.innerHTML = acts.length ? acts.map(a=>`
+    <div class="act-item">
+      <div class="act-icon" style="background:rgba(74,125,255,.08);color:${a.col}"><i class="${a.icon}" style="font-size:13px"></i></div>
+      <div><div class="act-txt">${a.txt}</div><div class="act-time">${timeAgo(a.time)}</div></div>
+    </div>`).join('') : `<div class="empty"><i class="fas fa-bolt"></i><p>Belum ada aktivitas</p></div>`;
+}
+
+// ── BUYER ORDERS ──
+function buildOrders() {
+  const el = document.getElementById('buyerOrders');
+  if (!myOrders.length) {
+    el.innerHTML = `<div class="empty"><i class="fas fa-receipt"></i><p>Belum ada pesanan.<br><a href="index.html" style="color:var(--accent)">Yuk mulai belanja!</a></p></div>`;
+    return;
+  }
+  const statusColor = { completed:'var(--success)', pending:'var(--warn)', cancelled:'var(--danger)', processing:'var(--accent)' };
+  const statusLabel = { completed:'Selesai', pending:'Menunggu', cancelled:'Dibatalkan', processing:'Diproses' };
+  el.innerHTML = `<div style="display:flex;flex-direction:column;gap:10px">` + myOrders.map(o => `
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:14px 16px;display:flex;align-items:center;gap:14px">
+      <div style="width:44px;height:44px;border-radius:8px;background:var(--nav);border:1px solid var(--border);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--txt2)">
+        ${o.products?.image_url ? `<img src="${CLD_BASE}${o.products.image_url}" style="width:100%;height:100%;object-fit:cover"/>` : '<i class="fas fa-box"></i>'}
+      </div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(o.products?.name||'Produk')}</div>
+        <div style="font-size:11px;color:var(--txt2);margin-top:2px">${timeAgo(o.created_at)}</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:13px;font-weight:700;color:var(--accent)">${fmtRp(o.total_price||o.amount||0)}</div>
+        <span style="font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:${statusColor[o.status]||'var(--accent)'}22;color:${statusColor[o.status]||'var(--accent)'}">${statusLabel[o.status]||o.status||'Pending'}</span>
+      </div>
+    </div>`).join('') + `</div>`;
+}
+
+// ── SELLER PANEL ──
+function buildSellerPanel() {
+  const role = cProfile?.role;
+  if (!['seller','admin'].includes(role)) return;
+
+  const totalSold    = myProds.reduce((a,x)=>a+(x.sold_count||0),0);
+  const totalRevenue = myProds.reduce((a,x)=>a+(x.sold_count||0)*(x.price||0),0);
+  const activeProds  = myProds.filter(x=>x.is_active).length;
+
+  document.getElementById('sellerStats').innerHTML = [
+    { val:myProds.length,                      lab:'Total Produk',   col:'var(--accent)' },
+    { val:totalSold,                            lab:'Total Terjual',  col:'var(--success)' },
+    { val:fmtRp(totalRevenue),                 lab:'Est. Omzet',     col:'var(--warn)' },
+  ].map(s=>`
+    <div class="ss-card">
+      <div class="ss-val" style="color:${s.col}">${typeof s.val==='number'?s.val.toLocaleString('id-ID'):s.val}</div>
+      <div class="ss-lab">${s.lab}</div>
+    </div>`).join('');
+
+  const grid = document.getElementById('sellerProds');
+  grid.innerHTML = myProds.length ? myProds.slice(0,6).map(p=>`
+    <div class="prod-card" onclick="location.href='seller-dashboard.html?tab=produk'">
+      <div class="pc-img">${p.image_url?`<img src="${CLD_BASE}${p.image_url}" alt="${esc(p.name)}"/>`:'<i class="fas fa-box-open"></i>'}</div>
+      <div class="pc-body">
+        <div class="pc-cat">${esc(p.category||'Produk')}</div>
+        <div class="pc-name">${esc(p.name)}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px">
+          <div class="pc-price">${fmtRp(p.price)}</div>
+          <span class="chip ${p.is_active?'chip-g':'chip-r'}" style="font-size:9px;padding:2px 6px">${p.is_active?'Aktif':'Off'}</span>
+        </div>
+      </div>
+    </div>`).join('') + (myProds.length>6?`<div style="grid-column:1/-1;text-align:center;padding:12px"><a href="seller-dashboard.html" class="btn bg bsm">Lihat semua ${myProds.length} produk →</a></div>`:'')
+    : `<div class="empty" style="grid-column:1/-1"><i class="fas fa-box-open"></i><p>Belum ada produk.<br><a href="seller-dashboard.html" style="color:var(--accent)">Tambah produk sekarang</a></p></div>`;
+}
+
+// ── CS PANEL ──
+function buildCsPanel() {
+  const role = cProfile?.role;
+  if (!['cs','admin'].includes(role)) return;
+  document.getElementById('csCards').innerHTML = [
+    { val:'—', lab:'Tiket Aktif',    col:'var(--warn)',    icon:'fas fa-ticket' },
+    { val:'—', lab:'Diselesaikan',   col:'var(--success)', icon:'fas fa-circle-check' },
+    { val:'—', lab:'Rata-rata Resp', col:'var(--accent)',  icon:'fas fa-clock' },
+    { val:'—', lab:'Rating CS',      col:'var(--warn)',    icon:'fas fa-star' },
+  ].map(c=>`
+    <div class="cs-card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <i class="${c.icon}" style="color:${c.col};font-size:14px"></i>
+        <span style="font-size:11px;color:var(--txt2)">${c.lab}</span>
+      </div>
+      <div class="cs-val" style="color:${c.col}">${c.val}</div>
+    </div>`).join('');
+}
+
+// ── ADMIN PANEL ──
+function buildAdminPanel() {
+  if (cProfile?.role !== 'admin') return;
+  document.getElementById('adminCards').innerHTML = [
+    { icon:'fas fa-users',           bg:'rgba(74,125,255,.1)', col:'var(--accent)',  lab:'Total User',    val:'—' },
+    { icon:'fas fa-boxes-stacked',   bg:'rgba(34,197,94,.1)',  col:'var(--success)', lab:'Produk Aktif',  val:'—' },
+    { icon:'fas fa-money-bill-wave', bg:'rgba(245,158,11,.1)', col:'var(--warn)',    lab:'Deposit Today', val:'—' },
+    { icon:'fas fa-receipt',         bg:'rgba(168,85,247,.1)', col:'var(--purple)',  lab:'Orders Total',  val:'—' },
+  ].map(c=>`
+    <div class="ov-card">
+      <div class="ov-icon" style="background:${c.bg};color:${c.col}"><i class="${c.icon}"></i></div>
+      <div class="ov-val" style="color:${c.col}">${c.val}</div>
+      <div class="ov-lab">${c.lab}</div>
+    </div>`).join('');
+
+  // Load admin stats async
+  loadAdminStats();
+
+  document.getElementById('adminLinks').innerHTML = [
+    { href:'admin-panel.html',    icon:'fas fa-chart-pie',   label:'Admin Panel',     col:'var(--accent)' },
+    { href:'deposit-admin.html',  icon:'fas fa-qrcode',      label:'Kelola Deposit',  col:'var(--warn)' },
+    { href:'info-admin.html',     icon:'fas fa-bell',        label:'Kelola Info',     col:'var(--purple)' },
+    { href:'seller-dashboard.html',icon:'fas fa-store',      label:'Seller View',     col:'var(--success)' },
+    { href:'cs-dashboard.html',   icon:'fas fa-headset',     label:'CS View',         col:'var(--cyan)' },
+  ].map(l=>`<a href="${l.href}" class="btn bg" style="flex:auto;justify-content:center"><i class="${l.icon}" style="color:${l.col}"></i> ${l.label}</a>`).join('');
+}
+
+async function loadAdminStats() {
+  try {
+    const [u, p, o] = await Promise.all([
+      sb.from('profiles').select('*',{count:'exact',head:true}),
+      sb.from('products').select('*',{count:'exact',head:true}).eq('is_active',true),
+      sb.from('orders').select('*',{count:'exact',head:true}),
+    ]);
+    const cards = document.querySelectorAll('#adminCards .ov-val');
+    if (cards[0]) cards[0].textContent = (u.count||0).toLocaleString('id-ID');
+    if (cards[1]) cards[1].textContent = (p.count||0).toLocaleString('id-ID');
+    if (cards[3]) cards[3].textContent = (o.count||0).toLocaleString('id-ID');
+  } catch(e) {}
+}
+
+// ── FILL EDIT FORM ──
+function fillEditForm() {
+  const p = cProfile;
+  const set=(id,v)=>{ const el=document.getElementById(id); if(el) el.value=v||''; };
+  set('eu',  p.username);
+  set('efn', p.full_name);
+  set('ewa', p.whatsapp);
+  set('eloc',p.location);
+  set('eweb',p.website);
+  set('esn', p.store_name);
+  set('esd', p.store_description);
+  set('esc', p.store_category);
+  set('ehs', p.store_hours);
+  set('etg', p.telegram);
+  set('eig', p.instagram);
+  set('etw', p.twitter);
+  set('edi', p.discord);
+  // Show store fields for seller/admin
+  const sf = document.getElementById('storeFields');
+  if (sf) sf.style.display = ['seller','admin'].includes(p.role) ? 'block' : 'none';
+}
+
+async function saveProfile() {
+  const payload = {
+    username:          document.getElementById('eu')?.value.trim(),
+    full_name:         document.getElementById('efn')?.value.trim(),
+    whatsapp:          document.getElementById('ewa')?.value.trim(),
+    location:          document.getElementById('eloc')?.value.trim(),
+    website:           document.getElementById('eweb')?.value.trim(),
+    store_name:        document.getElementById('esn')?.value.trim(),
+    store_description: document.getElementById('esd')?.value.trim(),
+    store_category:    document.getElementById('esc')?.value,
+    store_hours:       document.getElementById('ehs')?.value.trim(),
+    telegram:          document.getElementById('etg')?.value.trim(),
+    instagram:         document.getElementById('eig')?.value.trim(),
+    twitter:           document.getElementById('etw')?.value.trim(),
+    discord:           document.getElementById('edi')?.value.trim(),
+  };
+  if (!payload.username) return toast('Username wajib diisi', 'e');
+  const { error } = await sb.from('profiles').update(payload).eq('id', cUser.id);
+  if (error) return toast('Gagal: '+error.message, 'e');
+  Object.assign(cProfile, payload);
+  buildHeader();
+  buildInfoList();
+  buildQuickLinks();
+  toast('Profil diperbarui ✅', 's');
+  switchTab('overview');
+}
+
+// ── SECURITY ──
+function showSecurityEmail() {
+  const el = document.getElementById('acEmail');
+  if (el) el.value = cUser.email;
+}
+
+async function changePass() {
+  const p1 = document.getElementById('p1')?.value;
+  const p2 = document.getElementById('p2')?.value;
+  if (!p1||!p2) return toast('Isi kedua field', 'e');
+  if (p1!==p2)  return toast('Password tidak cocok', 'e');
+  if (p1.length<6) return toast('Min. 6 karakter', 'e');
+  const { error } = await sb.auth.updateUser({ password: p1 });
+  if (error) return toast('Gagal: '+error.message, 'e');
+  toast('Password berhasil diperbarui ✅', 's');
+  document.getElementById('p1').value='';
+  document.getElementById('p2').value='';
+}
+
+// ── PIN TRANSAKSI ──
+function updatePinStatus() {
+  const el = document.getElementById('pinStatus');
+  if (!el) return;
+  const hasPin = cProfile?.transaction_pin;
+  el.innerHTML = hasPin
+    ? `<span style="color:var(--success);font-weight:600"><i class="fas fa-circle-check"></i> PIN aktif</span>`
+    : `<span style="color:var(--warn);font-weight:600"><i class="fas fa-triangle-exclamation"></i> Belum ada PIN — wajib dibuat sebelum transaksi</span>`;
+}
+
+function pinNext(i) {
+  const v = document.getElementById(`pin${i}`).value;
+  if (v && i < 5) document.getElementById(`pin${i+1}`).focus();
+}
+function pinBack(i, e) {
+  if (e.key==='Backspace' && !document.getElementById(`pin${i}`).value && i>0) {
+    document.getElementById(`pin${i-1}`).focus();
+  }
+}
+function cpinNext(i) {
+  const v = document.getElementById(`cpin${i}`).value;
+  if (v && i < 5) document.getElementById(`cpin${i+1}`).focus();
+}
+function cpinBack(i, e) {
+  if (e.key==='Backspace' && !document.getElementById(`cpin${i}`).value && i>0) {
+    document.getElementById(`cpin${i-1}`).focus();
+  }
+}
+
+async function savePin() {
+  const pin  = [0,1,2,3,4,5].map(i=>document.getElementById(`pin${i}`)?.value||'').join('');
+  const cpin = [0,1,2,3,4,5].map(i=>document.getElementById(`cpin${i}`)?.value||'').join('');
+  if (pin.length!==6 || !/^\d{6}$/.test(pin)) return toast('PIN harus 6 digit angka', 'e');
+  if (pin!==cpin) return toast('PIN tidak cocok', 'e');
+  // Store as hash (simple base64 for demo; in prod use bcrypt via edge function)
+  const pinHash = btoa(pin);
+  const { error } = await sb.from('profiles').update({ transaction_pin: pinHash }).eq('id', cUser.id);
+  if (error) return toast('Gagal: '+error.message, 'e');
+  cProfile.transaction_pin = pinHash;
+  // Clear inputs
+  for (let i=0;i<6;i++) { document.getElementById(`pin${i}`).value=''; document.getElementById(`cpin${i}`).value=''; }
+  updatePinStatus();
+  buildBalance();
+  toast('PIN transaksi disimpan ✅', 's');
+}
+
+// ── BIO ──
+function openBioEdit() {
+  document.getElementById('bioText').style.display = 'none';
+  const ea = document.getElementById('bioEditArea');
+  ea.style.display = 'block';
+  const inp = document.getElementById('bioInp');
+  inp.value = cProfile.bio || '';
+  document.getElementById('bioCc').textContent = inp.value.length+'/200';
+  inp.focus();
+}
+function cancelBio() {
+  document.getElementById('bioText').style.display = 'block';
+  document.getElementById('bioEditArea').style.display = 'none';
+}
+async function saveBio() {
+  const bio = document.getElementById('bioInp').value.trim();
+  const { error } = await sb.from('profiles').update({ bio }).eq('id', cUser.id);
+  if (error) return toast('Gagal: '+error.message, 'e');
+  cProfile.bio = bio;
+  const el = document.getElementById('bioText');
+  el.innerHTML = bio ? esc(bio) : '<span style="font-style:italic;opacity:.5">Belum ada bio.</span>';
+  cancelBio();
+  toast('Bio diperbarui ✅', 's');
+}
+
+// ── AVATAR UPLOAD ──
+async function uploadAvatar(event) {
+  const file = event.target.files[0]; if (!file) return;
+  if (file.size > 3*1024*1024) return toast('Maks 3MB', 'e');
+  const bar = document.getElementById('avBar'), fill = document.getElementById('avFill');
+  bar.style.display='block'; fill.style.width='20%';
+  try {
+    const fd = new FormData(); fd.append('file',file); fd.append('upload_preset',CLD_PRESET); fd.append('folder','avatars');
+    fill.style.width='60%';
+    const res  = await fetch(CLD_UP, { method:'POST', body:fd });
+    const data = await res.json();
+    fill.style.width='100%';
+    if (data.error) throw new Error(data.error.message);
+    const rel = data.public_id+'.'+data.format;
+    await sb.from('profiles').update({ avatar_url: rel }).eq('id', cUser.id);
+    cProfile.avatar_url = rel;
+    const img = `<img src="${data.secure_url}" alt="av"/>`;
+    document.getElementById('mainAv').innerHTML = img;
+    const ep = document.getElementById('editAvPrev');
+    if (ep) ep.innerHTML = img;
+    updateXbnAv();
+    toast('Foto profil diperbarui ✅', 's');
+  } catch(err) { toast('Upload gagal: '+err.message, 'e'); }
+  finally { setTimeout(()=>{ bar.style.display='none'; fill.style.width='0%'; },800); event.target.value=''; }
+}
+
+function triggerBannerUpload() { document.getElementById('bannerFileInput').click(); }
+async function uploadBanner(event) {
+  const file = event.target.files[0]; if (!file) return;
+  if (file.size > 5*1024*1024) return toast('Maks 5MB', 'e');
+  try {
+    const fd = new FormData(); fd.append('file',file); fd.append('upload_preset',CLD_PRESET); fd.append('folder','banners');
+    toast('Mengupload banner...', 'w');
+    const res  = await fetch(CLD_UP, { method:'POST', body:fd });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    const rel = data.public_id+'.'+data.format;
+    await sb.from('profiles').update({ store_banner: rel }).eq('id', cUser.id);
+    cProfile.store_banner = rel;
+    const bw = document.getElementById('bannerWrap');
+    let img = bw.querySelector('img:not([alt="banner-overlay"])');
+    if (!img) { img = document.createElement('img'); img.style='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0'; bw.insertBefore(img,bw.firstChild); }
+    img.src = data.secure_url;
+    toast('Banner diperbarui ✅', 's');
+  } catch(err) { toast('Gagal: '+err.message, 'e'); }
+  event.target.value = '';
+}
+
+// ── DEPOSIT GUARD ──
+function goDeposit() {
+  // cUser is guaranteed here (page requires auth), but double-check
+  if (!cUser) { location.href='index.html'; return; }
+  document.body.style.opacity = '0.6';
+  document.body.style.transition = 'opacity .18s ease';
+  setTimeout(()=>{ location.href = 'deposit.html'; }, 180);
+}
+
+// ── LOGOUT ──
+async function doLogout() {
+  await sb.auth.signOut();
+  location.href = 'index.html';
+}
+
+// ── XBN AVATAR ──
+function updateXbnAv() {
+  const el = document.getElementById('xbnAv');
+  if (!el) return;
+  if (cProfile?.avatar_url) {
+    el.innerHTML = `<img src="${CLD_BASE}${cProfile.avatar_url}" alt="av"/>`;
+  } else if (cProfile?.username) {
+    el.style.background='var(--accent)'; el.style.color='#fff';
+    el.innerHTML = `<span style="font-size:11px;font-weight:800">${cProfile.username[0].toUpperCase()}</span>`;
+  }
+}
+
+// ── UTILS ──
+function fmtRp(v) { if (!v&&v!==0) return 'Rp 0'; return 'Rp '+Number(v).toLocaleString('id-ID'); }
+function fmtDate(d) { if (!d) return '—'; return new Date(d).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}); }
+function timeAgo(d) {
+  if (!d) return '—';
+  const s = Math.floor((Date.now()-new Date(d))/1000);
+  if (s<60) return 'baru saja';
+  if (s<3600) return Math.floor(s/60)+' mnt lalu';
+  if (s<86400) return Math.floor(s/3600)+' jam lalu';
+  if (s<2592000) return Math.floor(s/86400)+' hari lalu';
+  return fmtDate(d);
+}
+function esc(s) { if(!s) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function animVal(id, num, str) {
+  const el = document.getElementById(id); if (!el) return;
+  if (str !== undefined) { el.textContent = str; return; }
+  const steps=20; let i=0;
+  const iv=setInterval(()=>{ i++; el.textContent=Math.round(num*(i/steps)).toLocaleString('id-ID'); if(i>=steps){clearInterval(iv);el.textContent=num.toLocaleString('id-ID');}},500/steps);
+}
+function toast(msg, type='') {
+  const el=document.createElement('div'); el.className=`toast ${type}`; el.textContent=msg;
+  document.getElementById('tc').appendChild(el);
+  setTimeout(()=>el.remove(), 3500);
+}
+
+// ── is-own-show: hide elements meant only for own profile if guest ──
+// (already all in own-profile context so no-op here, kept for future multi-profile)
+</script>
+</body>
+</html>
